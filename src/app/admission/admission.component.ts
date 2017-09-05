@@ -69,7 +69,6 @@ export class AdmissionComponent implements OnInit {
         delete(){
           this.admission.splice(0,1);
         }
-
   constructor() { }
 
   ngOnInit() {
