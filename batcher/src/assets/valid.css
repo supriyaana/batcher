@@ -1,0 +1,30 @@
+input.ng-invalid {
+  border-left: 5px solid #cc3300; }
+
+input.ng-valid {
+  border-left: 5px solid green; }
+
+.navbar-custom {
+  font-family: 'Times New Roman';
+  padding: 5px;
+  background-color: #e0ad7d;
+  border-style: dashed; }
+
+._font {
+  font-style: normal;
+  font-family: 'Lucida Sans';
+  font-size: 0.5%;
+  color: #c46b33; }
+
+._btn {
+  margin-left: 80px; }
+
+.form_bg {
+  background-image: url("book.jpg");
+  width: 100px;
+  height: 600px; }
+
+._color {
+  background-color: #fbfbfb; }
+
+/*# sourceMappingURL=valid.css.map */
