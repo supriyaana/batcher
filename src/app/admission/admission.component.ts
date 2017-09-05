@@ -1,0 +1,78 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-admission',
+  templateUrl: './admission.component.html',
+  styleUrls: ['./admission.component.css']
+})
+export class AdmissionComponent implements OnInit {
+    admission = [
+      {name:"supi",email:"supriya.kurundkar@gmail.com",mobile:9786456321,address:"parbhani",coursetype:"frontend",sub:"angular2"}
+    ];
+
+    userform = new FormGroup({
+    name: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
+    email: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(12)]),
+    mobile: new FormControl("",[Validators.required,Validators.minLength(10),Validators.maxLength(12)]),
+    address: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(10)]),
+    coursetype:new FormControl,
+    sub:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(7)])
+      
+  });
+
+
+       private userforms:boolean = true;
+       private updateforms:boolean =  false;
+       private table:boolean = false;
+       selectedadmission:string;
+
+       
+      updateform = new FormGroup({
+      name:new FormControl,
+      email:new FormControl,
+      mobile:new FormControl,
+      address:new FormControl,
+      coursetype:new FormControl,
+      sub:new FormControl
+     });
+
+    onSubmit(){
+      if(this.userforms==true){
+        this.userforms = false;
+        this.table=true;
+        console.log(this.userform.value);
+        //alert(" Form Submited");
+      }
+    }
+
+    onSubmits(){
+      console.log(this.updateform.value);
+      //alert("Update Form Submited");
+    }
+
+       edit(adm){
+         if(this.table==true){
+           this.table = false;
+           this.updateforms=true;
+         }
+         this.selectedadmission = adm;
+       }
+
+       update(){
+         if(this.updateforms==true){
+           this.updateforms = false;
+           this.table = true;
+         }
+          }
+           
+        delete(){
+          this.admission.splice(0,1);
+        }
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,0 +1,213 @@
+
+<div class="container _color" *ngIf="userforms">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+    <div class="col-sm-offset-2 col-sm-8 _font">
+    <h4>Admision Form</h4>
+    </div>
+    <br><br>
+    <!--Form Starts-->
+  <form [formGroup]="userform" (ngSubmit)="onSubmit()"> 
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="form-group">
+        <label>
+          Student Name:
+        </label>
+        <input type="text" #refName class="form-control" formControlName="name"  placeholder="Enter the name" pattern="[a-zA-Z ]*">
+        <div *ngIf="userform.controls['name'].hasError('required')"></div>
+        <div *ngIf="userform.controls['name'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['name'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Student Email:
+        </label>
+        <input type="text" #Email class="form-control" formControlName="email" pattern="[a-zA-Z]*" placeholder="Enter the address">
+        <div *ngIf="userform.controls['address'].hasError('required')"></div>
+        <div *ngIf="userform.controls['address'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Student Mobile No:
+        </label>
+        <input type="text"  #refMobile class="form-control" formControlName="mobile" pattern="[0-9]*" placeholder="Enter the mobile">
+        <div *ngIf="userform.controls['mobile'].hasError('required')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('pattern')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Student Address:
+        </label>
+        <input type="text" #refAddress class="form-control" formControlName="address" pattern="[a-zA-Z]*" placeholder="Enter the address">
+        <div *ngIf="userform.controls['address'].hasError('required')"></div>
+        <div *ngIf="userform.controls['address'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>
+      </div>
+
+       <div class="form-group">
+        <label>
+          Student Sub:
+        </label>
+        <input type="text" #refAddress class="form-control" formControlName="sub" pattern="[a-zA-Z]*" placeholder="Enter the address">
+        <div *ngIf="userform.controls['sub'].hasError('required')"></div>
+        <div *ngIf="userform.controls['sub'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['sub'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Course type:</label>
+        <select class="form-control">
+          <option></option>
+          <option>Android</option>
+          <option>Backend</option>
+          <option>Frontend</option>
+          <option>IOS</option>
+          <option>Native</option>
+        </select>
+      </div>
+
+      <div class="form-group">  
+        <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success btn-btn-lg form-control">Submit</button>
+      </div>
+
+    </div>
+
+  </div>
+  </form>
+  <!--Form Ends-->
+  </div>
+</div>
+
+<div class="container _color" *ngIf="table">
+    <div class="_font">
+    <h4>Read Data & Delete Data </h4>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>StudentName</th>
+        <th width=400>Email</th>
+        <th width=400>Mobile</th>
+        <th width=400>Address</th>
+        <th width=400>CourseType</th>
+        <th width=400>Subject</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let adm of admission">
+          <td>{{adm.name}}</td>
+          <td>{{adm.email}}</td>
+          <td>{{adm.mobile}}</td>
+          <td>{{adm.address}}</td>
+          <td>{{adm.coursetype}}</td>
+          <td>{{adm.sub}}</td>
+          <td>
+          <button (click)="edit(adm)"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button (click)="delete()"><span class="glyphicon glyphicon-remove"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div> 
+
+  <div class="container _color" *ngIf="updateforms">
+      <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+      <div class="col-sm-offset-2 col-sm-8 _font">
+      <h4> Update Admision Form</h4>
+      </div>
+      <br><br>
+    <!--Form Starts-->
+    <form [formGroup]="userform" (ngSubmit)="onSubmits()"> 
+    <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="form-group">
+        <label>
+          Student Name:
+        </label>
+        <input type="text" #refName class="form-control" formControlName="name" [(ngModel)]="selectedadmission.name" placeholder="Enter the name" pattern="[a-zA-Z ]*">
+        <div *ngIf="userform.controls['name'].hasError('required')"></div>
+        <div *ngIf="userform.controls['name'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['name'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Student Email:
+        </label>
+        <input type="text" #Email class="form-control" formControlName="email" [(ngModel)]="selectedadmission.email" pattern="[a-zA-Z]*" placeholder="Enter the address">
+        <div *ngIf="userform.controls['address'].hasError('required')"></div>
+        <div *ngIf="userform.controls['address'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Student Mobile No:
+        </label>
+        <input type="text"  #refMobile class="form-control" formControlName="mobile" [(ngModel)]="selectedadmission.mobile" pattern="[0-9]*" placeholder="Enter the mobile">
+        <div *ngIf="userform.controls['mobile'].hasError('required')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('pattern')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Student Address:
+        </label>
+        <input type="text" #refAddress class="form-control" formControlName="address" [(ngModel)]="selectedadmission.address" pattern="[a-zA-Z]*" placeholder="Enter the address">
+        <div *ngIf="userform.controls['address'].hasError('required')"></div>
+        <div *ngIf="userform.controls['address'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>
+      </div>
+
+       <div class="form-group">
+        <label>
+          Student Sub:
+        </label>
+        <input type="text" #refAddress class="form-control" formControlName="sub" pattern="[a-zA-Z]*" [(ngModel)]="selectedadmission.sub" placeholder="Enter the address">
+        <div *ngIf="userform.controls['sub'].hasError('required')"></div>
+        <div *ngIf="userform.controls['sub'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['sub'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Course type:</label>
+        <select class="form-control" formControlName="coursetype" [(ngModel)]="selectedadmission.coursetype">
+          <option></option>
+          <option>Android</option>
+          <option>Backend</option>
+          <option>Frontend</option>
+          <option>IOS</option>
+          <option>Native</option>
+        </select>
+      </div>
+
+      <div class="form-group">  
+        <button type="update"  [disabled] ="!updateform.valid" class="btn btn-success btn-btn-lg form-control" (click)="update()">Update</button>
+      </div>
+
+    </div>
+
+  </div>
+  </form>
+  <!--Form Ends-->
+  </div>
+</div>
+
+
+
+
+
+        

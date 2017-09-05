@@ -1,0 +1,119 @@
+<div class="container _color" *ngIf="userforms">
+<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+  <div class="col-sm-offset-2 col-sm-8 _font">
+  <h4>Lecture Form</h4>
+  </div>
+  <!--- Form Starts--> 
+<form [formGroup]="userform" (ngSubmit)="onSubmit()"> 
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+       <div class="form-group">
+        <label>Hall Number</label>
+         <input type="text" #refHall class="form-control" formControlName="hall_num"  id="hall_num" placeholder="Enter the hall number" pattern="[0-9]*">
+        <div *ngIf="userform.controls['hall_num'].hasError('required')"></div>
+        <div *ngIf="userform.controls['hall_num'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['hall_num'].hasError('maxlength')"></div>
+      </div>
+      
+      <div class="form-group">
+        <label>Lecture Sub</label>
+       <input type="text" #refName class="form-control" formControlName="lecture" id="lecture"  placeholder="Enter the lecture sub" pattern="[a-zA-Z ]*">
+        <div *ngIf="userform.controls['lecture'].hasError('required')"></div>
+        <div *ngIf="userform.controls['lecture'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['lecture'].hasError('maxlength')"></div>
+      </div>
+      
+      <div class="form-group">
+        <label>Lecture Date</label>
+        <div #refDate (updateTime)="updateMyTime()">{{date |date:format}}</div>
+      </div>
+
+      <!--<div class="form-group">
+        <label>Lecture Time</label> 
+          <div (onload)= "checkTime()"> </div> 
+      </div>-->
+       <div class="form-group">
+      <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success form-control">Submit</button>
+    </div>
+
+    </div>
+  </div>
+</form>
+<!--Form Ends-->
+</div>
+</div>
+
+  <div class="container _color" *ngIf="table">
+    <h4>Read Data & Delete Data </h4>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>Lecture</th>
+        <th width=400>Hall No.</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let lec of lect; ">
+          <td>{{lec.lecture}}</td>
+          <td>{{lec.hall_num}}</td>
+          <td>
+          <button><span class="glyphicon glyphicon-pencil" (click)="edit(lec)"></span></button>
+          <button><span class="glyphicon glyphicon-remove" (click)="delete()"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div> 
+
+  <div class="container _color" *ngIf="updateforms">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+    <div class="col-sm-offset-2 col-sm-8 _font">
+    <h3>Update Lecture</h3>
+    </div>
+    <!--Form Starts-->
+  <form [formGroup]="updateform" (ngSubmit)="onSubmit()"> 
+    <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="form-group">
+        <label>Hall Number</label>
+       <input type="text" #refHall class="form-control" formControlName="hall_num"  [(ngModel)]="selectedlec.hall_num" placeholder="Enter the hall number" pattern="[0-9]*">
+        <div *ngIf="updateform.controls['hall_num'].hasError('required')"></div>
+        <div *ngIf="updateform.controls['hall_num'].hasError('minlength')"></div>
+        <div *ngIf="updateform.controls['hall_num'].hasError('maxlength')" ></div>
+      </div>
+      
+      <div class="form-group">
+        <label>Lecture Sub</label>
+       <input type="text" #refName class="form-control" formControlName="lecture" [(ngModel)]="selectedlec.lecture"  placeholder="Enter the lecture sub" pattern="[a-zA-Z ]*">
+        <div *ngIf="updateform.controls['lecture'].hasError('required')"></div>
+        <div *ngIf="updateform.controls['lecture'].hasError('minlength')"></div>
+        <div *ngIf="updateform.controls['lecture'].hasError('maxlength')"></div>
+      </div>
+      <span></span>
+      
+      <div class="form-group">
+        <label>Lecture Date</label>
+        <div #refDate (updateTime)="updateMyTime()">{{date |date:format}}</div>
+      </div>
+
+      <!--<div class="form-group">
+        <label>Lecture Time</label> 
+          <div> {{ dateObj | date:'shortTime' }} </div> 
+      </div>-->
+
+       <div class="form-group">
+      <button type="update"  [disabled] ="!updateform.valid" class="btn btn-success form-control" (click)="update()">Update</button>
+    </div>
+
+    </div>
+  </div>
+  <!--Form Ends-->
+</form>
+</div>
+</div>
+
