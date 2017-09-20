@@ -1,6 +1,5 @@
 import { Component, OnInit, Attribute} from '@angular/core';
 import { FormControl,FormGroup,Validators} from '@angular/forms';
-import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -17,18 +16,24 @@ export class LecturesComponent implements OnInit {
       userform = new FormGroup({
       lecture:new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(10)]),
       hall_num:new FormControl('',[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
+      date:new FormControl,
+      time:new FormControl
       })
 
     
       updateform = new FormGroup({
       lecture: new  FormControl,
-      hall_num:new FormControl
+      hall_num:new FormControl,
+      date:new FormControl,
+      time:new FormControl
       })
 
      lect= [
-      {id: 1, lecture:"angular2",hall_num:"123"},
-      {id: 2, lecture:"mongodb",hall_num:"456"},
+      {id: 1, lecture:"MongoDb",hall_num:"123", date:"12/3/2017"},
+      {id: 2, lecture:"JS",hall_num:"456",date:"10/9/2017"},
     ];
+        
+      
 
      private userforms: boolean = true;
      private updateforms: boolean = false;
@@ -44,17 +49,21 @@ export class LecturesComponent implements OnInit {
         
     } 
        onSubmit(){
-      if(this.userforms==true){
-        this.userforms = false;
-        this.table=true;
         console.log(this.userform.value);
-        //alert(" Form Submited");
-      }
-    }
+        alert(" Form Submited");
+       }
+
+       detail(){
+          if(this.userforms==true){
+          this.userforms = false;
+          this.table=true;
+          }
+       }
        edit(lec){
          if(this.table==true){
            this.table = false;
            this.updateforms=true;
+           alert("Do You want To Edit");
           
          }
            this.selectedlec = lec;
@@ -70,21 +79,17 @@ export class LecturesComponent implements OnInit {
         
         delete(){
           this.lect.splice(0,1);
+          alert("Do You Want To Delete");
+        }
+
+        sort(){
+          this.lect.sort();
         }
         
-      
-      
-       constructor(@Attribute("format") format) { 
-        //this.format = format;
-        this.date =  new Date(); 
-    
-        setInterval(() => {
-        this.date =  new Date();
+       constructor() { 
         
-        }, 1000);
-    
         }
-   
+    
         ngOnInit() {
         }
 

@@ -1,0 +1,168 @@
+<div class="container _color" *ngIf="lecturerforms">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+    <div class="col-sm-offset-2 col-sm-8 _font">
+    <h4>Lecturer Form</h4>
+    </div>
+    <br><br>
+    </div>
+    <form [formGroup]="lecturer" (ngSubmit)="Submit()">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            <div *ngIf="lecturer.controls['name'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['name'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['name'].hasError('maxlength')"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Mobile Number:</label>
+            <input type="text" class="form-control" formControlName="mobilenumber">
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <textarea name="address" class="form-control" formControlName="address"></textarea>
+            <div *ngIf="lecturer.controls['address'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['address'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['address'].hasError('maxlength')"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Salary</label>
+            <input type="text" class="form-control" formControlName="salary">
+            <div *ngIf="lecturer.controls['salary'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('maxlength')"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Joining date</label>
+            <input type="date" class="form-control" formControlName="date">
+            <div *ngIf="lecturer.controls['date'].hasError('required')"></div>
+          </div>
+
+          <div class="form-group">
+            <label>Qualification</label>
+            <input type="text" class="form-control" formControlName="qualification">
+            <div *ngIf="lecturer.controls['qualification'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['qualification'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['qualification'].hasError('maxlength')"></div>
+          </div>
+
+          <div class="form-group">
+           <button type="submit" class=" btn btn-success btn btn-sm form-control">Submit</button>
+          </div>
+
+          <div class="form-group">
+           <button type="submit" class=" btn btn-info btn btn-sm form-control" (click)="detail()">Lecturer Details</button>
+          </div>
+
+
+        </div>
+      </div>
+    </form>
+</div> 
+
+
+ <div class="container _color" *ngIf="table">
+   <div class="_font">
+    <h4>Read Data & Delete Data </h4>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>Name</th>
+        <th width=400>Mobile Number</th>
+        <th width=400>Address</th>
+        <th width=400>Salary</th>
+        <th width=400>Joining Date</th>
+        <th width=400> Qualification</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="info" *ngFor="let lec of lecturers">
+          <td>{{lec.name}}</td>
+          <td>{{lec.mobile}}</td>
+          <td>{{lec.address}}</td>
+          <td>{{lec.salary}}</td>
+          <td>{{lec.date}}</td>
+          <td>{{lec.qualification}}</td>
+          <td>
+          <button (click)="edit(lec)"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button (click)="delete()"><span class="glyphicon glyphicon-remove"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+      </div>
+   </div> 
+
+   <div class="container _color" *ngIf="updateforms">
+      <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+      <div class="col-sm-offset-2 col-sm-8 _font">
+      <h4>Lecturer Form</h4>
+      </div>
+      <br><br>
+     </div>
+    <form [formGroup]="lecupdate" (ngSubmit)="OnSubmits()">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name" [(ngModel)]="selectedlec.name">
+            <!--<div *ngIf="lecturer.controls['name'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['name'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['name'].hasError('maxlength')"></div>-->
+          </div>
+
+          <div class="form-group">
+            <label>Mobile Number:</label>
+            <input type="text" class="form-control" formControlName="mobilenumber" [(ngModel)]="selectedlec.mobile">
+            <!--<div *ngIf="lecturer.controls['number'].hasError('required')"></div>
+            <div *ngIf="lectuer.controls['number'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['number'].hasError('maxlength')"></div>-->
+          </div>
+
+          <div class="form-group">
+            <label>Address</label>
+            <textarea name="address" class="form-control" formControlName="address" [(ngModel)]="selectedlec.address"></textarea>
+            <!--<div *ngIf="lecturer.controls['address'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['address'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['address'].hasError('maxlength')"></div>-->
+          </div> 
+
+          <div class="form-group">
+            <label>Salary</label>
+            <input type="text" class="form-control" formControlName="salary" [(ngModel)]="selectedlec.salary">
+            <!--<div *ngIf="lecturer.controls['salary'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('maxlength')"></div>-->
+          </div>
+
+          <div class="form-group">
+            <label>Joining date</label>
+            <input type="date" class="form-control" formControlName="date" [(ngModel)]="selectedlec.date">
+            <!--<div *ngIf="lecturer.controls['salary'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('maxlength')"></div>-->
+          </div>
+
+          <div class="form-group">
+            <label>Qualification</label>
+            <input type="text" class="form-control" formControlName="qualification" [(ngModel)]="selectedlec.qualification">
+          </div>
+
+          <div class="form-group">
+           <button type="update" class=" btn btn-success btn btn-sm form-control" (click)="update()">Update</button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+</div>  

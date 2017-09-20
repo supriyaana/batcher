@@ -1,15 +1,15 @@
 
-<div class="container _color">
+<div class="container _color" *ngIf="userforms">
   <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
-    <div class="col-sm-offset-2 col-sm-8 _font">
+    <div class="col-sm-offset-3 col-sm-8 _font">
     <h4> Fees Form</h4>
     </div>
   <!--Form Starts-->
  <form [formGroup]="userform" (ngSubmit)="onSubmit()"> 
   <div class="row">
-    <div class="col-sm-offset-6 col-sm-8">
+    <div class="col-sm-offset-6 col-sm-6">
         <label>Date</label>
-        <div (updateTime)="updateMyTime()">{{date | date:format}}</div>
+      <div (updateTime)="updateMyTime()">{{date | date:format}}</div> 
     </div>
     <div class="col-sm-offset-2 col-sm-8">
       <div class="form-group">
@@ -37,14 +37,99 @@
         <label>
           Remainingfees:
         </label>
-        <input type="text" #refRemain class="form-control" formControlName="remain_fees" pattern="[0-9]*" placeholder="Enter the Remain Fees">
+        
+        </div>
+  
+      <div class="form-group">
+        <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success btn-btn-sm form-control">Submit</button>
+      </div>
+      <div class="form-group">
+        <button type="detail" class="btn btn-info btn btn-sm form-control">Fees details</button>
+      </div>
+    </div>
+</div>
+</form>
+</div>
+<!--Form Ends-->
+</div>
+
+ <div class="container _color" *ngIf="table">
+    <h4>Read Data & Delete Data </h4>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>Name</th>
+        <th width=400>Paidfees</th>
+         <th width=400>Remainfees</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="info" *ngFor="let fee of fees; ">
+          <td>{{fee.name}}</td>
+          <td>{{fee.paidfees}}</td>
+          <td>{{fee.remainfees}}</td>
+          <td>
+          <button><span class="glyphicon glyphicon-pencil" (click)="edit(fee)"></span></button>
+          <button><span class="glyphicon glyphicon-remove" (click)="delete()"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+  </div> 
+
+
+
+<div class="container _color" *ngIf="updateforms">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+    <div class="col-sm-offset-2 col-sm-8 _font">
+    <h4> Fees Form</h4>
+    </div>
+  <!--Form Starts-->
+ <form [formGroup]="userform" (ngSubmit)="onSubmits()"> 
+  <div class="row">
+    <div class="col-sm-offset-6 col-sm-8">
+        <label>Date</label>
+        <div (updateTime)="updateMyTime()">{{date | date:format}}</div>
+    </div>
+    <div class="col-sm-offset-2 col-sm-8">
+      <div class="form-group">
+        <label>
+          Student Name:
+        </label>
+        <input type="text" #refName class="form-control" formControlName="name" [(ngModel)]="selectedfees.name"  placeholder="Enter the name" pattern="[a-zA-Z ]*">
+        <div *ngIf="userform.controls['name'].hasError('required')"></div>
+        <div *ngIf="userform.controls['name'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['name'].hasError('maxlength')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Paidfees:
+        </label>
+        <input type="text"  #refPaid class="form-control" formControlName="paid_fees" [(ngModel)]="selectedfees.paidfees" pattern="[0-9]*" placeholder="Enter the Paid Fees">
+        <div *ngIf="userform.controls['paid_fees'].hasError('required')"></div>
+        <div *ngIf="userform.controls['paid_fees'].hasError('minlength')"></div>
+        <div *ngIf="userform.controls['paid_fees'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['paid_fees'].hasError('pattern')"></div>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Remainingfees:
+        </label>
+        <input type="text" #refRemain class="form-control" formControlName="remain_fees" [(ngModel)]="selectedfees.remainfees" pattern="[0-9]*" placeholder="Enter the Remain Fees">
         <div *ngIf="userform.controls['remain_fees'].hasError('required')"></div>
         <div *ngIf="userform.controls['remain_fees'].hasError('minlength')"></div>
         <div *ngIf="userform.controls['remain_fees'].hasError('maxlength')"></div>
         </div>
   
       <div class="form-group">
-        <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success btn-btn-lg form-control" routerLink="/feedback">Submit</button>
+        <button type="update"  class="btn btn-success btn-btn-lg form-control" (click)="update()">Update</button>
       </div>
     </div>
 </div>

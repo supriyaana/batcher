@@ -14,10 +14,10 @@ import { LecturesComponent } from './lectures/lectures.component';
 import { AdmissionComponent } from './admission/admission.component';
 import { AdmisionreceiptComponent } from './admisionreceipt/admisionreceipt.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { FrontendComponent } from './frontend/frontend.component';
-import { BackendComponent } from './backend/backend.component';
-import { AndroidComponent } from './android/android.component';
-import { IOSComponent } from './ios/ios.component';
+import { SelectModule } from 'angular2-select';
+import { NewbatchComponent } from './newbatch/newbatch.component';
+import { LecturerComponent } from './lecturer/lecturer.component';
+import { CoursesComponent } from './courses/courses.component';
 
 
 @NgModule({
@@ -29,10 +29,9 @@ import { IOSComponent } from './ios/ios.component';
     AdmissionComponent,
     AdmisionreceiptComponent,
     FeedbackComponent,
-    FrontendComponent,
-    BackendComponent,
-    AndroidComponent,
-    IOSComponent,
+    NewbatchComponent,
+    LecturerComponent,
+    CoursesComponent,
 
   
   ],

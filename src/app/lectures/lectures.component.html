@@ -25,17 +25,21 @@
       
       <div class="form-group">
         <label>Lecture Date</label>
-        <div #refDate (updateTime)="updateMyTime()">{{date |date:format}}</div>
+        <input type="date" class="form-control" formControlName="date">
       </div>
 
       <!--<div class="form-group">
         <label>Lecture Time</label> 
-          <div (onload)= "checkTime()"> </div> 
+          <input type="time" class="form-control" formControlName="time">
       </div>-->
-       <div class="form-group">
-      <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success form-control">Submit</button>
-    </div>
 
+       <div class="form-group">
+        <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success form-control">Submit</button>
+       </div>
+
+       <div class="form-group">
+         <button type="submit" class="btn btn-info btn btn-sm form-control" (click)="detail()">Lecture Details</button>
+       </div>
     </div>
   </div>
 </form>
@@ -50,15 +54,16 @@
       <table class="table">   
         <thead>
         <tr>
-        <th width=400>Lecture</th>
+        <th width=400>Lecture Subject</th>
         <th width=400>Hall No.</th>
+        <th width=400>Lecture Date</th>
         <th width=200> Actions</th>
         </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let lec of lect; ">
+          <tr class="info" *ngFor="let lec of lect;">
           <td>{{lec.lecture}}</td>
           <td>{{lec.hall_num}}</td>
+          <td>{{lec.date}}</td>
           <td>
           <button><span class="glyphicon glyphicon-pencil" (click)="edit(lec)"></span></button>
           <button><span class="glyphicon glyphicon-remove" (click)="delete()"></span></button>
@@ -68,7 +73,7 @@
         </table>
         </div>
       </div>
-    </div> 
+  </div> 
 
   <div class="container _color" *ngIf="updateforms">
   <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
@@ -98,13 +103,13 @@
       
       <div class="form-group">
         <label>Lecture Date</label>
-        <div #refDate (updateTime)="updateMyTime()">{{date |date:format}}</div>
+        <input type="date" class="form-control" formControlName="date" ([ngModel])="selectedlec.date">
       </div>
 
-      <!--<div class="form-group">
+      <div class="form-group">
         <label>Lecture Time</label> 
-          <div> {{ dateObj | date:'shortTime' }} </div> 
-      </div>-->
+          <input type="time" class="form-control"> 
+      </div>
 
        <div class="form-group">
       <button type="update"  [disabled] ="!updateform.valid" class="btn btn-success form-control" (click)="update()">Update</button>

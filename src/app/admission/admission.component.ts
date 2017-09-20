@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 
@@ -7,9 +8,12 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
   styleUrls: ['./admission.component.css']
 })
 export class AdmissionComponent implements OnInit {
+   
+
     admission = [
-      {name:"supi",email:"supriya.kurundkar@gmail.com",mobile:9786456321,address:"parbhani",coursetype:"frontend",sub:"angular2"}
+      {name:"supi",email:"supriya@gmail.com",mobile:9786456321,address:"parbhani",coursetype:"frontend",sub:"angular2"}
     ];
+
 
     userform = new FormGroup({
     name: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
@@ -21,28 +25,26 @@ export class AdmissionComponent implements OnInit {
       
   });
 
-
-       private userforms:boolean = true;
+      private userforms:boolean = true;
        private updateforms:boolean =  false;
        private table:boolean = false;
-       selectedadmission:string;
+       selectedadmission:any;
 
        
       updateform = new FormGroup({
-      name:new FormControl,
-      email:new FormControl,
-      mobile:new FormControl,
-      address:new FormControl,
-      coursetype:new FormControl,
-      sub:new FormControl
+      name:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
+      email:new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(9)]),
+      mobile:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(7)]),
+      address:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
+      coursetype:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
+      sub:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)])
      });
 
-    onSubmit(){
+   
+    detail(){
       if(this.userforms==true){
         this.userforms = false;
         this.table=true;
-        console.log(this.userform.value);
-        //alert(" Form Submited");
       }
     }
 
@@ -56,7 +58,9 @@ export class AdmissionComponent implements OnInit {
            this.table = false;
            this.updateforms=true;
          }
+         
          this.selectedadmission = adm;
+         alert("Do You Want To Edit");
        }
 
        update(){
@@ -68,7 +72,15 @@ export class AdmissionComponent implements OnInit {
            
         delete(){
           this.admission.splice(0,1);
+          alert("Do You Want To delete");
         }
+
+      submit(){
+      console.log(this.userform.value);
+     // alert('form submitted');
+  }
+
+
   constructor() { }
 
   ngOnInit() {

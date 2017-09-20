@@ -1,0 +1,63 @@
+<div class="container _color" *ngIf="batchforms">
+  <div class=" col-md-12 col-sm-offset-2 col-sm-6 col-xs-12 col-lg-12">
+  <div class=" font col-sm-offset-3 col-sm-8 _font">
+    <h4>Create New Batch</h4>
+  </div>
+  </div>
+  <form [formGroup]="newbatchform" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <div class="form-group">
+          <label>Student Name:</label>
+          <input type="text" class="form-control" formControlName="name">
+          <div *ngIf="newbatchform.controls['name'].hasError('required')"></div>
+          <div *ngIf="newbatchform.controls['name'].hasError('minlength')"></div>
+          <div *ngIf="newbatchform.controls['name'].hasError('maxlength')"></div>
+        </div>
+        <div class="form-group">
+          <label>Student Batch Name:</label>
+          <input type="text" class="form-control" formControlName="batch">
+           <div *ngIf="newbatchform.controls['batch'].hasError('required')"></div>
+          <div *ngIf="newbatchform.controls['batch'].hasError('minlength')"></div>
+          <div *ngIf="newbatchform.controls['batch'].hasError('maxlength')"></div>   
+        </div>
+        <div class="form-group">
+          <button type="submit" [disabled]="!newbatchform.valid" class="btn btn-success btn-btn-sm form-control">Submit</button>
+        </div>
+        <div class="form-group">
+          <button type="detail" class="btn btn-success btn-btn-sm form-control"  (click)="detail()">New Batch Detail</button>
+        </div>
+      </div>
+    </div>  
+  </form>
+</div>
+
+<div class="container _color" *ngIf="table">    
+<div class="_font">
+    <h4>Read Data & Delete Data </h4>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>StudentName</th>
+        <th width=400> New Batch</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="info" *ngFor="let batch of newbatches">
+          <td>{{batch.name}}</td>
+          <td>{{batch.batchname}}</td>
+          <td>
+          <button (click)="delete()"><span class="glyphicon glyphicon-remove"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div> 
+
+

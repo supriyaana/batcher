@@ -1,14 +1,75 @@
- <div class="container form_bg"> 
-    <div class="_font col-sm-offset-3 col-sm-8">   
-    <h4>Student Batches</h4>
-    </div>  
-    <div class="col-sm-offset-3 col-sm-8">
-    <button class="btn btn-info btn btn-md active " routerLink="/frontend">Frontend</button>
-    <button class="btn btn-info btn btn-md active" routerLink="/backend">Backend</button>
-    <button class="btn btn-info btn btn-md active" routerLink="/android">Android</button>
-    <button class="btn btn-info btn btn-md active" routerLink="/IOS" routerLink="/ios">IOS</button>
+<div class="container _color" *ngIf="batchforms">
+     <div class="col-md-12 col-sm-offset-2 col-sm-6 col-xs-12 col-lg-12"> 
+    <div class="_font col-sm-offset-2 col-sm-8 _font">   
+     <h4>Existing Batch</h4>
+    </div> 
     </div>
+
+    <form [formGroup]="batchform" (ngSubmit)="submit()">
+        <div class="row">
+             <div class="col-sm-offset-3 col-sm-6">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <div *ngIf="batchform.controls['name'].hasError('required')"></div>
+                    <div *ngIf="batchform.controls['name'].hasError('minlength')"></div>
+                    <div *ngIf="batchform.controls['name'].hasError('maxlength')"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Add Existing To Batch</label>
+                    <select class="form-control" formControlName="existing">
+                      <option>A</option>
+                      <option>B</option>
+                      <option>C</option>
+                      <option>D</option>  
+                    </select>     
+                </div>
+
+                <div class="form-group">
+                    <button type="submit"[disabled]="!batchform.valid" class="form-control btn btn-success btn btn-sm">Submit</button>  
+                </div>
+                <div class="form-group">
+                    <button type="batch" class="form-control btn btn-info btn btn-sm" routerLink="/newbatch">Create New Batch</button>
+                </div> 
+
+                <div class="form-group">
+                    <button type="details" class="form-control btn btn-info btn btn-sm" (click)="detail()"> Existing Batch details</button>
+                </div>    
+            </div>
+        </div>
+    </form>        
+    
 </div>
+
+<div class="container _color" *ngIf="table">    
+    <div class="_font">
+        <h4>Read Data & Delete Data </h4>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>StudentName</th>
+        <th width=400>Existing Batch</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="info" *ngFor="let batch of batches">
+          <td>{{batch.name}}</td>
+          <td>{{batch.existingbatch}}</td>
+          <td>
+         <!-- <button (click)="edit(batch)"><span class="glyphicon glyphicon-pencil"></span></button>-->
+          <button (click)="delete()"><span class="glyphicon glyphicon-remove"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+    </div> 
 
 
 
