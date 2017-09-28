@@ -28,10 +28,15 @@
         <input type="date" class="form-control" formControlName="date">
       </div>
 
-      <!--<div class="form-group">
-        <label>Lecture Time</label> 
+      <div class="form-group">
+        <label>Lecture Start Time</label> 
           <input type="time" class="form-control" formControlName="time">
-      </div>-->
+      </div>
+
+      <div class="form-group">
+        <label>Lecture End Time</label> 
+          <input type="time" class="form-control" formControlName="endtime">
+      </div>
 
        <div class="form-group">
         <button type="submit"  [disabled] ="!userform.valid" class="btn btn-success form-control">Submit</button>
@@ -57,6 +62,8 @@
         <th width=400>Lecture Subject</th>
         <th width=400>Hall No.</th>
         <th width=400>Lecture Date</th>
+        <th width=400>Start Time</th>
+        <th width=400>End Time</th>
         <th width=200> Actions</th>
         </tr>
         </thead>
@@ -64,6 +71,8 @@
           <td>{{lec.lecture}}</td>
           <td>{{lec.hall_num}}</td>
           <td>{{lec.date}}</td>
+          <td>{{lec.starttime}}</td>
+          <td>{{lec.endtime}}</td>
           <td>
           <button><span class="glyphicon glyphicon-pencil" (click)="edit(lec)"></span></button>
           <button><span class="glyphicon glyphicon-remove" (click)="delete()"></span></button>
@@ -107,13 +116,19 @@
       </div>
 
       <div class="form-group">
-        <label>Lecture Time</label> 
-          <input type="time" class="form-control"> 
+        <label>Start Time</label> 
+          <input type="time" class="form-control" formControlName="time"([ngModel])="selectedlec.time"> 
       </div>
 
-       <div class="form-group">
-      <button type="update"  [disabled] ="!updateform.valid" class="btn btn-success form-control" (click)="update()">Update</button>
-    </div>
+      <div class="form-group">
+        <label>Lecture End Time</label> 
+          <input type="time" class="form-control" formControlName="endtime">
+      </div>
+
+
+      <div class="form-group">
+        <button type="update"  [disabled] ="!updateform.valid" class="btn btn-success form-control" (click)="update()">Update</button>
+      </div>
 
     </div>
   </div>

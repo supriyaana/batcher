@@ -17,7 +17,7 @@ export class AdmissionComponent implements OnInit {
 
     userform = new FormGroup({
     name: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
-    email: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(12)]),
+    email: new FormControl("",[Validators.required,Validators.minLength(15),Validators.maxLength(20)]),
     mobile: new FormControl("",[Validators.required,Validators.minLength(10),Validators.maxLength(12)]),
     address: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(10)]),
     coursetype:new FormControl,
@@ -32,8 +32,8 @@ export class AdmissionComponent implements OnInit {
 
        
       updateform = new FormGroup({
-      name:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
-      email:new FormControl("",[Validators.required,Validators.minLength(8),Validators.maxLength(9)]),
+      name:new FormControl("",[Validators.required,Validators.minLength(7),Validators.maxLength(8)]),
+      email:new FormControl("",[Validators.required,Validators.minLength(15),Validators.maxLength(20)]),
       mobile:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(7)]),
       address:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
       coursetype:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),

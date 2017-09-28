@@ -14,19 +14,19 @@
           Student Name:
         </label>
         <input type="text" #refName class="form-control" formControlName="name"  placeholder="Enter the name" pattern="[a-zA-Z ]*">
-        <div *ngIf="userform.controls['name'].hasError('required')"></div>
+        <!--<div *ngIf="userform.controls['name'].hasError('required')"></div>
         <div *ngIf="userform.controls['name'].hasError('minlength')"></div>
-        <div *ngIf="userform.controls['name'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['name'].hasError('maxlength')"></div>-->
       </div>
 
       <div class="form-group">
         <label>
           Student Email:
         </label>
-        <input type="text" #Email class="form-control" formControlName="email" pattern="[a-zA-Z @ .]*" placeholder="Enter the address">
-        <div *ngIf="userform.controls['address'].hasError('required')"></div>
+        <input type="email" #Email class="form-control" formControlName="email" pattern="[a-zA-Z@.]*" placeholder="Enter the address">
+        <!--<div *ngIf="userform.controls['address'].hasError('required')"></div>
         <div *ngIf="userform.controls['address'].hasError('minlength')"></div>
-        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>-->
       </div>
 
       <div class="form-group">
@@ -34,10 +34,10 @@
           Student Mobile No:
         </label>
         <input type="text"  #refMobile class="form-control" formControlName="mobile" pattern="[0-9]*" placeholder="Enter the mobile">
-        <div *ngIf="userform.controls['mobile'].hasError('required')"></div>
+        <!--<div *ngIf="userform.controls['mobile'].hasError('required')"></div>
         <div *ngIf="userform.controls['mobile'].hasError('minlength')"></div>
         <div *ngIf="userform.controls['mobile'].hasError('maxlength')"></div>
-        <div *ngIf="userform.controls['mobile'].hasError('pattern')"></div>
+        <div *ngIf="userform.controls['mobile'].hasError('pattern')"></div>-->
       </div>
 
       <div class="form-group">
@@ -45,9 +45,9 @@
           Student Address:
         </label>
         <textarea name="address" #refAddress class="form-control" formControlName="address" pattern="[a-zA-Z]*" placeholder="Enter the address"></textarea>
-        <div *ngIf="userform.controls['address'].hasError('required')"></div>
+        <!--<div *ngIf="userform.controls['address'].hasError('required')"></div>
         <div *ngIf="userform.controls['address'].hasError('minlength')"></div>
-        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['address'].hasError('maxlength')"></div>-->
       </div>
 
        <div class="form-group">
@@ -55,9 +55,9 @@
           Student Sub:
         </label>
         <input type="text" #refSub class="form-control" formControlName="sub" pattern="[a-zA-Z]*" placeholder="Enter the address">
-        <div *ngIf="userform.controls['sub'].hasError('required')"></div>
+        <!--<div *ngIf="userform.controls['sub'].hasError('required')"></div>
         <div *ngIf="userform.controls['sub'].hasError('minlength')"></div>
-        <div *ngIf="userform.controls['sub'].hasError('maxlength')"></div>
+        <div *ngIf="userform.controls['sub'].hasError('maxlength')"></div>-->
       </div>
 
       <div class="form-group">
@@ -105,7 +105,7 @@
         </tr>
         </thead>
         <tbody>
-          <tr class="info" *ngFor="let adm of admission">
+          <tr class="info"  *ngFor="let adm of admission">
           <td>{{adm.name}}</td>
           <td>{{adm.email}}</td>
           <td>{{adm.mobile}}</td>
@@ -138,19 +138,19 @@
           Student Name:
         </label>
         <input type="text" #refName class="form-control" formControlName="name" [(ngModel)]="selectedadmission.name" placeholder="Enter the name" pattern="[a-zA-Z ]*">
-        <div *ngIf="updateform.controls['name'].hasError('required')"></div>
+        <!--<div *ngIf="updateform.controls['name'].hasError('required')"></div>
         <div *ngIf="updateform.controls['name'].hasError('minlength')"></div>
-        <div *ngIf="updateform.controls['name'].hasError('maxlength')"></div>
+        <div *ngIf="updateform.controls['name'].hasError('maxlength')"></div>-->
       </div>
 
       <div class="form-group">
         <label>
           Student Email:
         </label>
-        <input type="text" #Email class="form-control" formControlName="email" [(ngModel)]="selectedadmission.email" pattern="[a-zA-Z @ .]*" placeholder="Enter the address">
-        <div *ngIf="updateform.controls['address'].hasError('required')"></div>
+        <input type="text" #Email class="form-control" formControlName="email" [(ngModel)]="selectedadmission.email" pattern="[a-zA-Z@.]*" placeholder="Enter the address">
+        <!--<div *ngIf="updateform.controls['address'].hasError('required')"></div>
         <div *ngIf="updateform.controls['address'].hasError('minlength')"></div>
-        <div *ngIf="updateform.controls['address'].hasError('maxlength')"></div>
+        <div *ngIf="updateform.controls['address'].hasError('maxlength')"></div>-->
       </div>
 
       <div class="form-group">
@@ -158,10 +158,10 @@
           Student Mobile No:
         </label>
         <input type="text"  #refMobile class="form-control" formControlName="mobile" [(ngModel)]="selectedadmission.mobile" pattern="[0-9]*" placeholder="Enter the mobile">
-        <div *ngIf="updateform.controls['mobile'].hasError('required')"></div>
+        <!--<div *ngIf="updateform.controls['mobile'].hasError('required')"></div>
         <div *ngIf="updateform.controls['mobile'].hasError('minlength')"></div>
         <div *ngIf="updateform.controls['mobile'].hasError('maxlength')"></div>
-        <div *ngIf="updateform.controls['mobile'].hasError('pattern')"></div>
+        <div *ngIf="updateform.controls['mobile'].hasError('pattern')"></div>-->
       </div>
 
       <div class="form-group">
@@ -169,9 +169,9 @@
           Student Address:
         </label>
         <input type="text" #refAddress class="form-control" formControlName="address" [(ngModel)]="selectedadmission.address" pattern="[a-zA-Z]*" placeholder="Enter the address">
-        <div *ngIf="updateform.controls['address'].hasError('required')"></div>
+        <!--<div *ngIf="updateform.controls['address'].hasError('required')"></div>
         <div *ngIf="updateform.controls['address'].hasError('minlength')"></div>
-        <div *ngIf="updateform.controls['address'].hasError('maxlength')"></div>
+        <div *ngIf="updateform.controls['address'].hasError('maxlength')"></div>-->
       </div>
 
        <div class="form-group">
@@ -179,9 +179,9 @@
           Student Sub:
         </label>
         <input type="text" #refSub class="form-control" formControlName="sub" pattern="[a-zA-Z]*" [(ngModel)]="selectedadmission.sub" placeholder="Enter the address">
-        <div *ngIf="updateform.controls['sub'].hasError('required')"></div>
+        <!--<div *ngIf="updateform.controls['sub'].hasError('required')"></div>
         <div *ngIf="updateform.controls['sub'].hasError('minlength')"></div>
-        <div *ngIf="updateform.controls['sub'].hasError('maxlength')"></div>
+        <div *ngIf="updateform.controls['sub'].hasError('maxlength')"></div>-->
       </div>
 
       <div class="form-group">

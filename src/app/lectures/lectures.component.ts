@@ -1,5 +1,5 @@
-import { Component, OnInit, Attribute} from '@angular/core';
-import { FormControl,FormGroup,Validators} from '@angular/forms';
+import { Component, OnInit, Attribute } from '@angular/core';
+import { FormControl,FormGroup,Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class LecturesComponent implements OnInit {
       lecture:new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(10)]),
       hall_num:new FormControl('',[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
       date:new FormControl,
-      time:new FormControl
+      time:new FormControl,
+      endtime:new FormControl
       })
 
     
@@ -25,12 +26,13 @@ export class LecturesComponent implements OnInit {
       lecture: new  FormControl,
       hall_num:new FormControl,
       date:new FormControl,
-      time:new FormControl
+      time:new FormControl,
+      endtime:new FormControl
       })
 
      lect= [
-      {id: 1, lecture:"MongoDb",hall_num:"123", date:"12/3/2017"},
-      {id: 2, lecture:"JS",hall_num:"456",date:"10/9/2017"},
+      {id: 1, lecture:"MongoDb",hall_num:"123", date:"12/3/2017",starttime:"12:04:15",endtime:"1:05:16"},
+      {id: 2, lecture:"JS",hall_num:"456",date:"10/9/2017",starttime:"2:08:18",endtime:"3:4:19"},
     ];
         
       

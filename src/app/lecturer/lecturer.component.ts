@@ -9,7 +9,7 @@ import { FormControl,FormGroup,Validators } from '@angular/forms';
 export class LecturerComponent implements OnInit {
 
 lecturers =[
-  {name:"Sarita",mobile:"9324567802",address:"Pune",salary:"10000",date:"12/4/2017", qualification:"MCA"}
+  {name:"SaritaJadhav",mobile:"9324567802",address:"Pune",salary:"10000",date:"12/4/2017",leavingdate:"12/8/2017", qualification:"MCA"}
 
   ];
 
@@ -24,6 +24,7 @@ lecturers =[
     address:new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
     salary:new FormControl('',[Validators.required,Validators.maxLength(8),Validators.minLength(6)]),
     date:new FormControl('',[Validators.required]),
+    leavingdate:new FormControl,
     qualification: new FormControl ('',[Validators.required,Validators.maxLength(8),Validators.minLength(6)]),
   
   });
@@ -34,6 +35,7 @@ lecturers =[
   address:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
   salary:new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)]),
   date:new FormControl,
+  leavingdate:new FormControl,
   qualification: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(8)])
   
 });

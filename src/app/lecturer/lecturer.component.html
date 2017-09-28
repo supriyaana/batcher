@@ -6,6 +6,7 @@
     <br><br>
     </div>
     <form [formGroup]="lecturer" (ngSubmit)="Submit()">
+      <!--form start-->
       <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
           <div class="form-group">
@@ -43,6 +44,12 @@
             <div *ngIf="lecturer.controls['date'].hasError('required')"></div>
           </div>
 
+           <div class="form-group">
+            <label>Leaving date</label>
+            <input type="date" class="form-control" formControlName="leavingdate">
+            <div *ngIf="lecturer.controls['date'].hasError('required')"></div>
+          </div>
+
           <div class="form-group">
             <label>Qualification</label>
             <input type="text" class="form-control" formControlName="qualification">
@@ -63,6 +70,7 @@
         </div>
       </div>
     </form>
+    <!--form end-->
 </div> 
 
 
@@ -76,10 +84,11 @@
         <thead>
         <tr>
         <th width=400>Name</th>
-        <th width=400>Mobile Number</th>
+        <th width=400>MobileNum</th>
         <th width=400>Address</th>
         <th width=400>Salary</th>
-        <th width=400>Joining Date</th>
+        <th width=400>JoiningDate</th>
+        <th width="400">LeavingDate</th>
         <th width=400> Qualification</th>
         <th width=200> Actions</th>
         </tr>
@@ -91,9 +100,10 @@
           <td>{{lec.address}}</td>
           <td>{{lec.salary}}</td>
           <td>{{lec.date}}</td>
+          <td>{{lec.leavingdate}}</td>
           <td>{{lec.qualification}}</td>
           <td>
-          <button (click)="edit(lec)"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button (click)="edit(lec)"><span class="glyphicon glyphicon-pencil"></span></button><br><br>
           <button (click)="delete()"><span class="glyphicon glyphicon-remove"></span></button>
           </td>
           </tr>
@@ -148,6 +158,14 @@
           <div class="form-group">
             <label>Joining date</label>
             <input type="date" class="form-control" formControlName="date" [(ngModel)]="selectedlec.date">
+            <!--<div *ngIf="lecturer.controls['salary'].hasError('required')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('minlength')"></div>
+            <div *ngIf="lecturer.controls['salary'].hasError('maxlength')"></div>-->
+          </div>
+
+           <div class="form-group">
+            <label>Leavingdate</label>
+            <input type="date" class="form-control" formControlName="leavingdate" [(ngModel)]="selectedlec.date">
             <!--<div *ngIf="lecturer.controls['salary'].hasError('required')"></div>
             <div *ngIf="lecturer.controls['salary'].hasError('minlength')"></div>
             <div *ngIf="lecturer.controls['salary'].hasError('maxlength')"></div>-->

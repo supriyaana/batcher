@@ -1,24 +1,112 @@
-<div class="container _color">
+<div class="container _color" *ngIf="userforms">
   <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
-    <div class="col-sm-offset-2 col-sm-8 _font">
+    <div class="col-sm-offset-3 col-sm-8 _font">
     <h4> Add Syllabus For Courses</h4>
     </div>
   </div>  
     <br><br><br><br>
     <!--Form Starts-->
-  <form> 
+  <form [formGroup]="courseform" (ngSubmit)="submit()"> 
   <div class="row">
-    <div class="col-sm-offset-4 col-sm-8">
+    <div class="col-sm-offset-3 col-sm-6">
       <div class="form-group">
-        <input type="file" accept="docfile/*" #file>
+        <label>Course Name:</label>
+        <input type="text" #refName class="form-control" formControlName="course">
       </div>
 
       <div class="form-group">
-       <button (click)="file.click()" class="btn btn-sm btn btn-info">Add Syllabus For Courses</button>
+        <label>Course Subtitle:</label>
+        <input type="text"  #refSub class="form-control" formControlName="subtitle">
+      </div>
+
+      <div class="form-group">
+        <label>Description:</label>
+        <textarea name="description" #refDescription class="form-control" formControlName="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <button type="submit"  class="form-control btn btn-success btn btn-sm">Add Courses</button>
+      </div>
+
+      <div class="form-group">
+        <button type="course" class="form-control btn btn-info btn btn-sm" (click)="detail()">Course Details</button>
       </div>
       
     </div>
   </div>
   </form>
 </div>
+
+<div class="container _color" *ngIf="table">
+    <div class="_font">
+    <h4>Read Data & Delete Data </h4>
+    </div>
+    <div class="row">
+      <div class="table-responsive">
+      <table class="table">   
+        <thead>
+        <tr>
+        <th width=400>Course Name</th>
+        <th width=400>Course subtitle</th>
+        <th width=400>Description</th>
+        <th width=200> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr class="info"  *ngFor="let course of courses">
+          <td>{{course.name}}</td>
+          <td>{{course.subtitle}}</td>
+          <td>{{course.description}}</td>
+          <td>
+          <button (click)="edit(course)"><span class="glyphicon glyphicon-pencil"></span></button>
+          <button (click)="delete()"><span class="glyphicon glyphicon-remove"></span></button>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container _color" *ngIf="updateforms">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-12 col-lg-12">
+    <div class="col-sm-offset-3 col-sm-8 _font">
+    <h4> Update Syllabus For Courses</h4>
+    </div>
+  </div>  
+    <br><br><br><br>
+    <!--Form Starts-->
+  <form [formGroup]="updateform" (ngSubmit)="onSubmit()"> 
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="form-group">
+        <label>Course Name:</label>
+        <input type="text"  #refName class="form-control" formControlName="name" [(ngModel)]="selected.name">
+      </div>
+
+      <div class="form-group">
+        <label>Course Subtitle:</label>
+        <input type="text" #refSub class="form-control" formControlName="subtitle"[(ngModel)]="selected.subtitle">
+      </div>
+
+      <div class="form-group">
+        <label>Description:</label>
+        <textarea name="description" #refDescription class="form-control" formControlName="description" [(ngModel)]="selected.description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <button type="course" class="form-control btn btn-info btn btn-sm" (click)="update()"> Update Course Details</button>
+      </div>
+      
+    </div>
+  </div>
+  </form>
+  <!--Form End-->
+</div>
+
+   
+ 
+
+
+
         
